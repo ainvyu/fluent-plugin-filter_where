@@ -111,4 +111,9 @@ class ParserTest < Test::Unit::TestCase
     result = parser.scan(%q[NOT boolean = true])
     assert_false(result.eval(record))
   end
+
+  def test_contain_parentheses
+    result = parser.scan(%q[(string = 'string')])
+    assert_true(result.eval(record))
+  end
 end
